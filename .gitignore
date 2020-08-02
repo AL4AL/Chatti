@@ -4,6 +4,9 @@
 
 ### Android ###
 
+# Parse configs
+ParseConfig.kt
+
 .idea/
 # Built application files
 *.apk

@@ -1,0 +1,4 @@
+package com.sajjad.application_component.parse.component
+
+const val PARSE_APPLICATION_ID = "{application_id}"
+const val SERVER_URL = "{server_url}"
