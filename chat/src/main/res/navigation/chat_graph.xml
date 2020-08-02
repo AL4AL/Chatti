@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/chat_graph"
-    app:startDestination="@id/conversationFragment">
+    app:startDestination="@id/conversationsFragment">
 
     <fragment
-        android:id="@+id/conversationFragment"
-        android:name="com.sajjad.chat.conversation.presentation.ConversationFragment"
+        android:id="@+id/conversationsFragment"
+        android:name="com.sajjad.chat.conversation.presentation.ConversationsFragment"
         android:label="@string/conversations"></fragment>
 </navigation>

@@ -71,5 +71,16 @@ dependencies {
     implementation common.dagger
     kapt common.dagger_compiler
 
+    // Rx Binding
+    implementation common.rx_binding
+    implementation common.rx_binding_core
+    implementation common.rx_binding_appcompat
+
+    // Sdp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    // Modules
     implementation project(path: ':Application-Component')
+    implementation project(path: ':base')
 }

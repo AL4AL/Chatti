@@ -11,10 +11,13 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
     private val stateMutableLiveData = MutableLiveData<ViewState>()
     val stateLiveData = stateMutableLiveData.asLiveData()
 
-    // Delegate will handle state event deduplication
-    // (multiple states of the same type holding the same data will not be dispatched multiple times to LiveData stream)
+    // Delegate can handle state event deduplication
     protected var state by Delegates.observable(initialState) { _, old, new ->
         stateMutableLiveData.value = new
+    }
+
+    init {
+        state = initialState
     }
 
     protected fun sendAction(viewAction: ViewAction) {
