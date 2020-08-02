@@ -80,4 +80,5 @@ dependencies {
     implementation project(path: ':Application-Component')
     implementation project(path: ':chat')
     implementation project(path: ':auth')
+    implementation project(path: ':base')
 }
