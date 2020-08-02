@@ -76,4 +76,5 @@ dependencies {
     implementation common.dagger
     kapt common.dagger_compiler
 
+    implementation project(path: ':Application-Component')
 }

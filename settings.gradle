@@ -1,2 +1,3 @@
+include ':Application-Component'
 include ':app'
 rootProject.name = "Chatti"
