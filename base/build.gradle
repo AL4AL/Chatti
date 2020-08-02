@@ -71,4 +71,8 @@ dependencies {
     implementation common.dagger
     kapt common.dagger_compiler
 
+    // Rx Binding
+    implementation common.rx_binding
+    implementation common.rx_binding_core
+    implementation common.rx_binding_appcompat
 }
