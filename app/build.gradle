@@ -76,5 +76,7 @@ dependencies {
     implementation common.dagger
     kapt common.dagger_compiler
 
+    // Modules
     implementation project(path: ':Application-Component')
+    implementation project(path: ':chat')
 }
