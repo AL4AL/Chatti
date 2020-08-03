@@ -7,5 +7,7 @@
     <fragment
         android:id="@+id/conversationsFragment"
         android:name="com.sajjad.chat.conversation.presentation.ConversationsFragment"
-        android:label="@string/conversations"></fragment>
+        android:label="@string/conversations">
+        <deepLink app:uri="@string/conversations_deep_link" />
+    </fragment>
 </navigation>
