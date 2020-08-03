@@ -5,5 +5,6 @@
     app:startDestination="@id/chat_graph">
 
     <include app:graph="@navigation/chat_graph" />
+    <include app:graph="@navigation/auth_graph" />
 
 </navigation>

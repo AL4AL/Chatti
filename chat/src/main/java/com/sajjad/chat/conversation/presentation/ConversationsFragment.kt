@@ -1,6 +1,7 @@
 package com.sajjad.chat.conversation.presentation
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sajjad.base.presentation.BaseFragment
 import com.sajjad.base.presentation.observe
+import com.sajjad.chat.R
 import com.sajjad.chat.conversation.domain.Conversation
 import com.sajjad.chat.conversation.presentation.di.DaggerConversationsPresentationComponent
 import com.sajjad.chat.databinding.FragConversationsBinding
@@ -72,7 +74,9 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
             conversationViewModel.loadConversations()
         } else {
             findNavController().popBackStack()
-            // TODO Go to login fragment
+            findNavController().navigate(
+                Uri.parse(getString(R.string.login_deep_link))
+            )
         }
     }
 
