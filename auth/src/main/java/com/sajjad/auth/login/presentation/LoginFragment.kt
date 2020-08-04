@@ -87,7 +87,8 @@ internal class LoginFragment : BaseFragment() {
 
     private fun setSignUpTvClickListener() {
         fragmentBinding.signUp.setOnClickListener {
-            // TODO Go for sign up
+            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            findNavController().navigate(action)
         }
     }
 

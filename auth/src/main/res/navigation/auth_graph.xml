@@ -10,7 +10,23 @@
         android:name="com.sajjad.auth.login.presentation.LoginFragment"
         android:label="@string/login"
         tools:layout="@layout/frag_login">
+
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFormFragment" />
+
         <deepLink app:uri="@string/login_deep_link" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFormFragment"
+        android:name="com.sajjad.auth.signup.presentation.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/frag_signup">
+        <action
+            android:id="@+id/action_signUpFormFragment_pop"
+            app:popUpTo="@id/signUpFormFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

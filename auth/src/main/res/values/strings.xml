@@ -7,4 +7,10 @@
     <string name="username_is_empty">User name is empty</string>
     <string name="password_is_empty">Password is empty</string>
     <string name="error_try_again">Error! try again</string>
+    <string name="already_on_chatti_sign_in">Already on chatti? login</string>
+    <string name="phone_number">Phone number</string>
+    <string name="sign_up">Sign up</string>
+    <string name="username_already_exists">Username already exists</string>
+    <string name="phone_number_is_empty">Phone number is empty</string>
+    <string name="phone_number_already_exists">PhonenNumber already exists</string>
 </resources>

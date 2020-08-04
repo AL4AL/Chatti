@@ -49,6 +49,7 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        authenticationViewModel.authenticate()
         setFabOnClickListener()
         observeAuthState()
         observeConversationsState()
