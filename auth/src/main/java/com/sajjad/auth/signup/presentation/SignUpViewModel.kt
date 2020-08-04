@@ -62,7 +62,7 @@ internal class SignUpViewModel @Inject constructor(
     internal data class ViewState(
         val isLoading: Boolean = false,
         val isUsernameTaken: Boolean = false,
-        val phoneNumberTaken: Boolean = false
+        val phoneNumberTaken: Boolean = false,
         val isError: Boolean = false,
         val isSuccessful: Boolean = false
     ) : BaseViewState
