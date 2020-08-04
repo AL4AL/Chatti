@@ -1,11 +1,9 @@
-package com.sajjad.chat.conversation.presentation.di
+package com.sajjad.chat.conversation.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sajjad.base.di.ViewModelKey
 import com.sajjad.base.presentation.factory.ViewModelProviderFactory
-import com.sajjad.chat.conversation.presentation.AuthenticationViewModel
-import com.sajjad.chat.conversation.presentation.ConversationViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

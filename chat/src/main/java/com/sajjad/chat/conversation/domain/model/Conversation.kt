@@ -1,4 +1,4 @@
-package com.sajjad.chat.conversation.domain
+package com.sajjad.chat.conversation.domain.model
 
 import com.parse.ParseObject
 import com.sajjad.base.domain.model.Message

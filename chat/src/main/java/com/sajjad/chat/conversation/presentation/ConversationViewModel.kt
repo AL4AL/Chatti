@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.sajjad.base.presentation.viewmodel.BaseAction
 import com.sajjad.base.presentation.viewmodel.BaseViewModel
 import com.sajjad.base.presentation.viewmodel.BaseViewState
-import com.sajjad.chat.conversation.domain.Conversation
+import com.sajjad.chat.conversation.domain.model.Conversation
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -26,6 +26,7 @@ internal class ConversationViewModel @Inject constructor() :
         viewModelScope.launch(exceptionHandler) {
             sendAction(Action.Loading)
             // TODO load conversations
+            sendAction(Action.ConversationsLoaded(emptyList()))
         }
     }
 

@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.sajjad.base.presentation.BaseFragment
 import com.sajjad.base.presentation.observe
 import com.sajjad.chat.R
-import com.sajjad.chat.conversation.domain.Conversation
-import com.sajjad.chat.conversation.presentation.di.DaggerConversationsPresentationComponent
+import com.sajjad.chat.conversation.DaggerConversationsComponent
+import com.sajjad.chat.conversation.domain.model.Conversation
 import com.sajjad.chat.databinding.FragConversationsBinding
 import kotlinx.android.synthetic.main.frag_conversations.*
 import javax.inject.Inject
@@ -34,7 +34,7 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.parentContext = context
-        DaggerConversationsPresentationComponent.create()
+        DaggerConversationsComponent.create()
             .inject(this)
     }
 
@@ -70,7 +70,8 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
             }
     }
 
-    private fun authenticatedState(isAuthenticated: Boolean) {
+    private fun authenticatedState(isAuthenticated: Boolean?) {
+        if (isAuthenticated === null) return
         if (isAuthenticated) {
             conversationViewModel.loadConversations()
         } else {
