@@ -53,11 +53,14 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
         setFabOnClickListener()
         observeAuthState()
         observeConversationsState()
+
     }
 
     private fun setFabOnClickListener() {
         fragmentBinding.floatingActionButton.setOnClickListener {
-            // TODO Go to contacts Fragment
+            findNavController().navigate(
+                ConversationsFragmentDirections.actionConversationsFragmentToContactsFragment()
+            )
         }
     }
 

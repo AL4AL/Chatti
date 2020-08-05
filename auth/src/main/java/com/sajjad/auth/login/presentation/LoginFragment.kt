@@ -99,6 +99,7 @@ internal class LoginFragment : BaseFragment() {
                 loadingState(state.isLoading)
                 successState(state.isSuccessful)
                 errorState(state.isError)
+                invalidUserPassState(state.invalidUserPass)
             }
     }
 
@@ -122,6 +123,13 @@ internal class LoginFragment : BaseFragment() {
     private fun errorState(isError: Boolean = true) {
         if (isError) {
             Toast.makeText(parentContext, getString(R.string.error_try_again), Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
+    private fun invalidUserPassState(isInvalid: Boolean) {
+        if (isInvalid) {
+            Toast.makeText(parentContext, R.string.invalid_user_name_password, Toast.LENGTH_SHORT)
                 .show()
         }
     }
