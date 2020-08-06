@@ -16,5 +16,6 @@ class MessageItemDecoration(private val padding: Int) : RecyclerView.ItemDecorat
         outRect.top = padding
         outRect.left = padding
         outRect.right = padding
+        outRect.bottom = padding * 2
     }
 }

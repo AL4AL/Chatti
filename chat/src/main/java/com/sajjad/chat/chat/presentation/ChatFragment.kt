@@ -44,12 +44,13 @@ internal class ChatFragment : BaseFragment() {
     private val args: ChatFragmentArgs by navArgs()
 
     private var loading = false
+    private var reachedToEnd = false
     private lateinit var rvLinearLayoutManager: LinearLayoutManager
 
     private val onScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             val lastVisibleItemPosition = rvLinearLayoutManager.findLastVisibleItemPosition()
-            if (!loading && (lastVisibleItemPosition + VISIBLE_THRESHOLD) > rvLinearLayoutManager.itemCount) {
+            if (!loading && !reachedToEnd && (lastVisibleItemPosition + VISIBLE_THRESHOLD) > rvLinearLayoutManager.itemCount) {
                 chatViewModel.nextPage(args.contactUsername)
             }
         }
@@ -127,6 +128,9 @@ internal class ChatFragment : BaseFragment() {
         if (messages != null) {
             Timber.d("width of rv: %d", fragmentBinding.chatRecyclerView.width)
             chatAdapter.submitData(messages)
+            if (messages.isEmpty()) {
+                reachedToEnd
+            }
         }
     }
 
@@ -157,7 +161,7 @@ internal class ChatFragment : BaseFragment() {
         if (message != null) {
             fragmentBinding.messageEditText.text.clear()
             chatAdapter.submitData(listOf(message))
-            fragmentBinding.chatRecyclerView.scrollToPosition(chatAdapter.itemCount - 1)
+            fragmentBinding.chatRecyclerView.scrollToPosition(0)
         }
     }
 

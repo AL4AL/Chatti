@@ -94,10 +94,10 @@ internal class ContactsFragment : BaseFragment() {
 
     private fun contactsState(contacts: List<Contact>) {
         contactAdapter.contacts = contacts
-        contactAdapter.onItemClickListener = { position, contact ->
+        contactAdapter.onItemClickListener = { _, contact ->
             contact?.let {
-                val action =
-                    ContactsFragmentDirections.actionContactsFragmentToChatFragment(it.name)
+                val action = ContactsFragmentDirections
+                    .actionContactsFragmentToChatFragment(it.name)
                 findNavController().navigate(action)
             }
         }
