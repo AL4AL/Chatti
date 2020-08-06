@@ -9,4 +9,6 @@
     <string name="ok">OK</string>
     <string name="none_of_your_contacts_have_application_account">None of your contacts have application account</string>
     <string name="message">Message</string>
+    <string name="chat">Chat</string>
+    <string name="send_failed">Send failed</string>
 </resources>

@@ -61,7 +61,7 @@ internal class LoginViewModel @Inject constructor(
 
     internal data class State(
         val isSuccessful: Boolean = false,
-        val invalidUserPass: Boolean = true,
+        val invalidUserPass: Boolean = false,
         val isError: Boolean = false,
         val isLoading: Boolean = false
     ) : BaseViewState

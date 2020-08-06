@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -95,7 +96,9 @@ internal class ContactsFragment : BaseFragment() {
         contactAdapter.contacts = contacts
         contactAdapter.onItemClickListener = { position, contact ->
             contact?.let {
-                // TODO Go to chat page
+                val action =
+                    ContactsFragmentDirections.actionContactsFragmentToChatFragment(it.name)
+                findNavController().navigate(action)
             }
         }
     }

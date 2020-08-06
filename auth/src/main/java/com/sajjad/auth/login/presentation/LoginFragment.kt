@@ -127,7 +127,7 @@ internal class LoginFragment : BaseFragment() {
         }
     }
 
-    private fun invalidUserPassState(isInvalid: Boolean) {
+    private fun invalidUserPassState(isInvalid: Boolean = true) {
         if (isInvalid) {
             Toast.makeText(parentContext, R.string.invalid_user_name_password, Toast.LENGTH_SHORT)
                 .show()
