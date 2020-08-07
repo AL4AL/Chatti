@@ -3,6 +3,7 @@ package com.sajjad.chat.conversation.presentation.adapter
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.amulyakhare.textdrawable.TextDrawable
 import com.amulyakhare.textdrawable.util.ColorGenerator
@@ -48,7 +49,12 @@ internal class ConversationViewHolder(
                 LayoutInflater.from(
                     parent.context
                 )
-            ),
+            ).also {
+                it.root.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+            },
             onItemClickListener
         )
     }

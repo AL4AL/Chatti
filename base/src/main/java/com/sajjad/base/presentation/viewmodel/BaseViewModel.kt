@@ -1,5 +1,6 @@
 package com.sajjad.base.presentation.viewmodel
 
+import androidx.annotation.MainThread
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sajjad.base.presentation.asLiveData
@@ -20,6 +21,7 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         state = initialState
     }
 
+    @MainThread
     protected fun sendAction(viewAction: ViewAction) {
         state = onReduceState(viewAction)
     }
