@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.parse.ParseUser
 import com.sajjad.base.domain.model.Message
+import com.sajjad.chat.R
 import com.sajjad.chat.databinding.MessageItemBinding
 
 internal class MessageViewHolder(
@@ -17,6 +18,7 @@ internal class MessageViewHolder(
         itemBinding.message = message
         if (message.from == ParseUser.getCurrentUser().username) {
             alignRight()
+            greenizeIt()
         }
     }
 
@@ -32,6 +34,18 @@ internal class MessageViewHolder(
         )
         cardAttr.gravity = Gravity.RIGHT
         itemBinding.card.layoutParams = cardAttr
+    }
+
+    private fun greenizeIt() {
+        itemBinding.run {
+            card.setCardBackgroundColor(
+                root.context.getColor(R.color.self_message_background)
+            )
+            timeTv.setTextColor(
+                root.context.getColor(R.color.self_message_time_text_color)
+            )
+        }
+
     }
 
     companion object {
