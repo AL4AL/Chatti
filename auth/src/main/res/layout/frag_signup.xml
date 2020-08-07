@@ -110,6 +110,7 @@
                             android:inputType="phone"
                             android:digits="0123456789 "
                             android:maxLength="10"
+                            android:imeOptions="actionDone"
                             android:textSize="@dimen/_20ssp" />
                     </com.google.android.material.textfield.TextInputLayout>
 

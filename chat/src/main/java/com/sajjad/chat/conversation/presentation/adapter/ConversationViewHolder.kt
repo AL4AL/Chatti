@@ -36,7 +36,7 @@ internal class ConversationViewHolder(
     private fun getTextDrawable(char: String): Drawable {
         val color = ColorGenerator.MATERIAL.getColor(char.hashCode())
         return TextDrawable.builder()
-            .buildRound(char, color)
+            .buildRound(char.toUpperCase(), color)
     }
 
     companion object {

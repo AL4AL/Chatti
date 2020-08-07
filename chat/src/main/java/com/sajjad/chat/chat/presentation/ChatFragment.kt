@@ -21,7 +21,6 @@ import com.sajjad.chat.chat.DaggerChatComponent
 import com.sajjad.chat.chat.presentation.adapter.ChatAdapter
 import com.sajjad.chat.chat.presentation.adapter.MessageItemDecoration
 import com.sajjad.chat.databinding.FragChatBinding
-import timber.log.Timber
 import javax.inject.Inject
 
 internal class ChatFragment : BaseFragment() {
@@ -76,6 +75,7 @@ internal class ChatFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpChatRecyclerView()
         loadChats()
+        chatViewModel.listenToNewMessages(args.contactUsername)
         observeChatState()
         observeEditorState()
         setSendButtonClickListener()
@@ -126,10 +126,14 @@ internal class ChatFragment : BaseFragment() {
 
     private fun chatMessagesLoadedState(messages: List<Message>?) {
         if (messages != null) {
-            Timber.d("width of rv: %d", fragmentBinding.chatRecyclerView.width)
+            val shouldScrollToLastMessage =
+                rvLinearLayoutManager.findFirstVisibleItemPosition() == 0
             chatAdapter.submitData(messages)
             if (messages.isEmpty()) {
                 reachedToEnd
+            }
+            if (shouldScrollToLastMessage) {
+                fragmentBinding.chatRecyclerView.scrollToPosition(0)
             }
         }
     }

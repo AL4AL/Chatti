@@ -55,6 +55,9 @@ dependencies {
     implementation common.navigation_fragment
     implementation common.navigation_ui
 
+    // Text drawable
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
     // Test
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
