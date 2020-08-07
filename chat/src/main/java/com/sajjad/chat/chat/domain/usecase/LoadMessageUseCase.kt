@@ -10,18 +10,11 @@ internal class LoadMessageUseCase @Inject constructor(
     private val messageRepository: MessageRepository
 ) : UseCase<LoadMessageUseCase.RequestValues, LoadMessageUseCase.Result>() {
 
-    private var pageIndex = 1
-
     override suspend fun execute(requestValue: RequestValues): Result = try {
         val messages = messageRepository.getMessages(
             requestValue.contactUsername,
-            if (requestValue.nextPage) {
-                pageIndex
-            } else {
-                pageIndex - 1
-            }
+            requestValue.page
         )
-        if (requestValue.nextPage) pageIndex++
         Result.Success(messages)
     } catch (e: ParseException) {
         Result.Failure(e.code)
@@ -32,7 +25,7 @@ internal class LoadMessageUseCase @Inject constructor(
 
     data class RequestValues(
         val contactUsername: String,
-        val nextPage: Boolean
+        val page: Int
     ) : UseCase.RequestValue
 
     sealed class Result : UseCase.ResponseValue {

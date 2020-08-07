@@ -28,13 +28,17 @@ internal class ChatAdapter @Inject constructor() : RecyclerView.Adapter<MessageV
     }
 
     fun submitData(messages: List<Message>) {
+        val newMessages = messages.filter {
+            this.messages.contains(it).not()
+        }
+        if (newMessages.isEmpty()) return
+        val insertPosition = 0
         if (this.messages.isEmpty()) {
-            this.messages.addAll(messages)
-            notifyItemRangeChanged(0, messages.size - 1)
+            this.messages.addAll(newMessages)
+            notifyItemRangeChanged(insertPosition, newMessages.size - 1)
         } else {
-            val insertPosition = 0
-            this.messages.addAll(insertPosition, messages)
-            notifyItemRangeInserted(insertPosition, messages.size)
+            this.messages.addAll(insertPosition, newMessages)
+            notifyItemRangeInserted(insertPosition, newMessages.size)
         }
     }
 }

@@ -23,6 +23,7 @@ internal class ChatViewModel @Inject constructor(
     private val messageLiveListenerUseCase: MessageLiveListenerUseCase
 ) : BaseViewModel<ChatViewModel.State, ChatViewModel.Action>(State()) {
 
+    private val messages = ArrayList<Message>()
     private var messagesLiveQueryDisconnectable: ParseMessageRepository.Disconnectable? = null
 
     override fun onCleared() {
@@ -34,15 +35,17 @@ internal class ChatViewModel @Inject constructor(
         isLoading = viewAction is Action.Loading,
         isError = viewAction is Action.Error,
         messages = if (viewAction is Action.Success) {
-            Timber.d("Push receiving was successful")
-            viewAction.messages
+            this@ChatViewModel.messages.also {
+                it.addAll(0, viewAction.messages.filter { message ->
+                    this@ChatViewModel.messages.contains(message).not()
+                })
+            }
         } else {
-            Timber.d("Push receiving sucks")
             null
         }
     )
 
-    fun nextPage(contactUsername: String) {
+    fun loadChats(contactUsername: String, page: Int) {
         val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
             sendAction(Action.Error)
             Timber.e(throwable)
@@ -53,28 +56,7 @@ internal class ChatViewModel @Inject constructor(
                 loadMessageUseCase,
                 LoadMessageUseCase.RequestValues(
                     contactUsername,
-                    true
-                )
-            )
-            when (result) {
-                is Result.Success -> sendAction(Action.Success(result.messages))
-                is Result.Failure -> sendAction(Action.Error)
-            }
-        }
-    }
-
-    fun reload(contactUsername: String) {
-        val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-            sendAction(Action.Error)
-            Timber.e(throwable)
-        }
-        viewModelScope.launch(exceptionHandler) {
-            sendAction(Action.Loading)
-            val result = useCaseHandler.execute(
-                loadMessageUseCase,
-                LoadMessageUseCase.RequestValues(
-                    contactUsername,
-                    false
+                    page
                 )
             )
             when (result) {
@@ -115,6 +97,10 @@ internal class ChatViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun onNewSentMessage(message: Message) {
+        sendAction(Action.Success(listOf(message)))
     }
 
     sealed class Action : BaseAction {

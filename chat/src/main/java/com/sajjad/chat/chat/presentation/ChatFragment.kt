@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jakewharton.rxbinding4.widget.textChanges
 import com.sajjad.base.domain.model.Message
 import com.sajjad.base.presentation.BaseFragment
 import com.sajjad.base.presentation.UnitTransformer
@@ -50,7 +51,9 @@ internal class ChatFragment : BaseFragment() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             val lastVisibleItemPosition = rvLinearLayoutManager.findLastVisibleItemPosition()
             if (!loading && !reachedToEnd && (lastVisibleItemPosition + VISIBLE_THRESHOLD) > rvLinearLayoutManager.itemCount) {
-                chatViewModel.nextPage(args.contactUsername)
+                val pageToLoad =
+                    ((lastVisibleItemPosition + VISIBLE_THRESHOLD) / CHAT_PAGE_SIZE).toInt() + 1
+                chatViewModel.loadChats(args.contactUsername, pageToLoad)
             }
         }
     }
@@ -80,6 +83,7 @@ internal class ChatFragment : BaseFragment() {
         observeEditorState()
         setSendButtonClickListener()
         setRetryButtonClickListener()
+        disableSendButtonWhenEditorIsEmpty()
     }
 
     private fun setSendButtonClickListener() {
@@ -93,12 +97,14 @@ internal class ChatFragment : BaseFragment() {
 
     private fun setRetryButtonClickListener() {
         fragmentBinding.retryButton.setOnClickListener {
-            chatViewModel.reload(args.contactUsername)
+            val pageToLoad =
+                ((rvLinearLayoutManager.findLastVisibleItemPosition() + VISIBLE_THRESHOLD) / CHAT_PAGE_SIZE).toInt() + 1
+            chatViewModel.loadChats(args.contactUsername, pageToLoad)
         }
     }
 
     private fun loadChats() {
-        chatViewModel.nextPage(args.contactUsername)
+        chatViewModel.loadChats(args.contactUsername, 1)
     }
 
     private fun observeChatState() {
@@ -126,6 +132,8 @@ internal class ChatFragment : BaseFragment() {
 
     private fun chatMessagesLoadedState(messages: List<Message>?) {
         if (messages != null) {
+            if (messages.isEmpty())
+                emptyState()
             val shouldScrollToLastMessage =
                 rvLinearLayoutManager.findFirstVisibleItemPosition() == 0
             chatAdapter.submitData(messages)
@@ -136,6 +144,10 @@ internal class ChatFragment : BaseFragment() {
                 fragmentBinding.chatRecyclerView.scrollToPosition(0)
             }
         }
+    }
+
+    private fun emptyState() {
+        // TODO
     }
 
     private fun observeEditorState() {
@@ -164,7 +176,7 @@ internal class ChatFragment : BaseFragment() {
     private fun messageSendSuccessful(message: Message? = null) {
         if (message != null) {
             fragmentBinding.messageEditText.text.clear()
-            chatAdapter.submitData(listOf(message))
+            chatViewModel.onNewSentMessage(message)
             fragmentBinding.chatRecyclerView.scrollToPosition(0)
         }
     }
@@ -179,6 +191,15 @@ internal class ChatFragment : BaseFragment() {
             adapter = chatAdapter
             addItemDecoration(MessageItemDecoration(UnitTransformer.dp2px(parentContext, 4F)))
             addOnScrollListener(onScrollListener)
+        }
+    }
+
+    private fun disableSendButtonWhenEditorIsEmpty() {
+        fragmentBinding.messageEditText.textChanges().subscribe {
+            fragmentBinding.sendButton.isEnabled = it.isNotBlank()
+            fragmentBinding.sendButton.alpha = if (it.isNotBlank()) 1F else 0.4F
+        }.let {
+            onStopCompositeDisposable.add(it)
         }
     }
 
