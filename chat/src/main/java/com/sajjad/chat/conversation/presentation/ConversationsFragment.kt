@@ -10,19 +10,26 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.sajjad.base.presentation.BaseFragment
 import com.sajjad.base.presentation.observe
 import com.sajjad.chat.R
 import com.sajjad.chat.conversation.DaggerConversationsComponent
 import com.sajjad.chat.conversation.domain.model.Conversation
+import com.sajjad.chat.conversation.presentation.adapter.ConversationAdapter
 import com.sajjad.chat.databinding.FragConversationsBinding
 import kotlinx.android.synthetic.main.frag_conversations.*
 import javax.inject.Inject
 
-class ConversationsFragment @Inject constructor() : BaseFragment() {
+internal class ConversationsFragment @Inject constructor() : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var conversationAdapter: ConversationAdapter
 
     private lateinit var fragmentBinding: FragConversationsBinding
 
@@ -53,7 +60,7 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
         setFabOnClickListener()
         observeAuthState()
         observeConversationsState()
-
+        setUpConversationsRecyclerView()
     }
 
     private fun setFabOnClickListener() {
@@ -61,6 +68,15 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
             findNavController().navigate(
                 ConversationsFragmentDirections.actionConversationsFragmentToContactsFragment()
             )
+        }
+    }
+
+    private fun setUpConversationsRecyclerView() {
+        fragmentBinding.conversationsRV.run {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(parentContext, VERTICAL, false)
+            adapter = this@ConversationsFragment.conversationAdapter
+            addItemDecoration(DividerItemDecoration(parentContext, VERTICAL))
         }
     }
 
@@ -104,6 +120,29 @@ class ConversationsFragment @Inject constructor() : BaseFragment() {
     }
 
     private fun conversationLoadState(conversations: List<Conversation>?) {
-        // TODO() Show conversations
+        if (conversations !== null) {
+            if (conversations.isEmpty()) {
+                emptyState()
+            } else {
+                emptyState(isEmpty = false)
+                updateAdapter(conversations)
+            }
+        }
+    }
+
+    private fun emptyState(isEmpty: Boolean = true) {
+        fragmentBinding.emptyStateImage.isVisible = isEmpty
+        fragmentBinding.emptyStateText.isVisible = isEmpty
+    }
+
+    private fun updateAdapter(conversations: List<Conversation>) {
+        conversationAdapter.conversations = conversations
+        conversationAdapter.onItemClickListener = { _, conversation ->
+            conversation?.let {
+                val action = ConversationsFragmentDirections
+                    .actionConversationsFragmentToChatFragment(conversation.username)
+                findNavController().navigate(action)
+            }
+        }
     }
 }

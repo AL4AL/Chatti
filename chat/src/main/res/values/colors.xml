@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="self_message_background">#EFFFDE</color>
+    <color name="self_message_time_text_color">#73b35f</color>
+</resources>

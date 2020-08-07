@@ -16,6 +16,10 @@
             app:destination="@id/contactsFragment" />
 
         <deepLink app:uri="@string/conversations_deep_link" />
+
+        <action
+            android:id="@+id/action_conversationsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
 
     <fragment

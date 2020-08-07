@@ -54,6 +54,7 @@ class ContactsRepository @Inject constructor(
                 phoneNumbers.add(phoneNumber)
             }
         }
+        cursor.close()
         return phoneNumbers
     }
 

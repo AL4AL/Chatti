@@ -6,10 +6,10 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.base.beautifyPhoneNumber
 import com.sajjad.chat.contacts.domain.model.Contact
-import com.sajjad.chat.databinding.ContactRowBinding
+import com.sajjad.chat.databinding.ContactItemBinding
 
 internal class ContactViewHolder(
-    private val binding: ContactRowBinding,
+    private val binding: ContactItemBinding,
     private inline val onItemClickListener: ((position: Int, contact: Contact?) -> Unit)? = null
 ) : RecyclerView.ViewHolder(binding.root) {
     private var contact: Contact? = null
@@ -39,7 +39,7 @@ internal class ContactViewHolder(
             onItemClickListener: ((position: Int, contact: Contact?) -> Unit)? = null
         ): ContactViewHolder {
 
-            val view = ContactRowBinding.inflate(
+            val view = ContactItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
                 )

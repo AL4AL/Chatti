@@ -37,6 +37,7 @@ class User(
     }
 
     companion object {
+        const val USERNAME = "username"
         const val PHONE_NUMBER = "phoneNumber"
         const val PHONE_NUMBER_ALREADY_TAKEN = 1001
     }

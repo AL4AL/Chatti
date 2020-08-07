@@ -11,4 +11,5 @@
     <string name="message">Message</string>
     <string name="chat">Chat</string>
     <string name="send_failed">Send failed</string>
+    <string name="you_have_no_conversations_yet">You have no conversations yet</string>
 </resources>

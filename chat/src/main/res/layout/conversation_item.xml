@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="conversation"
+            type="com.sajjad.chat.conversation.domain.model.Conversation" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp">
+
+        <ImageView
+            android:id="@+id/avatarIv"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:src="@drawable/ic_contact_24" />
+
+        <TextView
+            android:id="@+id/usernameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/avatarIv"
+            app:layout_constraintTop_toTopOf="@id/avatarIv"
+            app:layout_constraintBottom_toBottomOf="@id/avatarIv"
+            android:layout_marginLeft="@dimen/_8sdp"
+            tools:text="Alireza"
+            android:text="@{conversation.getUsername()}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_18ssp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
