@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <style name="NormalTheme" parent="MainTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorSecondaryLight</item>
+        <item name="textSizeOfFormsInput">@dimen/_20sdp</item>
+        <item name="android:windowBackground">@color/defaultBackground</item>
+        <item name="authLogoSize">@dimen/_80sdp</item>
+        <item name="authRedirectionTextSize">@dimen/_16ssp</item>
+        <item name="authRedirectionTextColor">@color/grey_600</item>
+        <item name="drawerHeaderColor">@color/colorSecondary</item>
+        <item name="drawerHeaderHeight">@dimen/_176sdp</item>
+        <item name="contactNameColor">@color/grey_600</item>
+        <item name="contactNameSize">@dimen/_16ssp</item>
+    </style>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textSizeOfFormsInput" format="dimension" />
+    <attr name="authLogoSize" format="dimension" />
+    <attr name="authRedirectionTextColor" format="color" />
+    <attr name="authRedirectionTextSize" format="dimension" />
+    <attr name="drawerHeaderColor" format="color" />
+    <attr name="drawerHeaderHeight" format="dimension" />
+    <attr name="contactNameColor" format="color" />
+    <attr name="contactNameSize" format="dimension" />
+</resources>

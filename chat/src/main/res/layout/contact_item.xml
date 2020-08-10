@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Ali Rashidi"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="?attr/contactNameSize"
+            android:textColor="?attr/contactNameColor"
             android:text="@{contact.name}" />
 
         <TextView

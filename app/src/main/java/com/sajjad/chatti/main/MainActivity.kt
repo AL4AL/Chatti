@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpNavigationWithAppbar() {
-        setSupportActionBar(my_toolbar)
+        setSupportActionBar(toolbar)
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
