@@ -3,27 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?attr/drawerHeaderHeight">
+    android:layout_height="?attr/drawerHeaderHeight"
+    android:background="?attr/drawerHeaderColor">
 
-    <FrameLayout
+    <ImageView
         android:id="@+id/headerImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="?attr/drawerProfileSize"
+        android:layout_height="?attr/drawerProfileSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="?attr/drawerHeaderColor" />
+        android:src="@drawable/ic_person_64"
+        android:background="?attr/drawerProfileBackground" />
 
     <TextView
         android:id="@+id/usernameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Navigation Header title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="?attr/drawerHeaderTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColorOnSecondaryColor"
         android:gravity="end"
         android:layout_margin="16dp" />
 

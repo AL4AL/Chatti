@@ -14,7 +14,11 @@
         <item name="authRedirectionTextColor">@color/grey_600</item>
         <item name="drawerHeaderColor">@color/colorSecondary</item>
         <item name="drawerHeaderHeight">@dimen/_176sdp</item>
+        <item name="drawerProfileSize">@dimen/_100sdp</item>
         <item name="contactNameColor">@color/grey_600</item>
         <item name="contactNameSize">@dimen/_16ssp</item>
+        <item name="drawerProfileBackground">@drawable/profile_circle_background</item>
+        <item name="textColorOnSecondaryColor">@android:color/white</item>
+        <item name="drawerHeaderTextSize">@dimen/_16ssp</item>
     </style>
 </resources>
