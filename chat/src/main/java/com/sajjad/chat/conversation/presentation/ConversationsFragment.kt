@@ -70,6 +70,7 @@ internal class ConversationsFragment @Inject constructor() : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         authenticationViewModel.authenticate()
         setFabOnClickListener()
+        setRetryButtonClickListener()
         observeAuthState()
         observeConversationsState()
         setUpConversationsRecyclerView()
@@ -80,6 +81,12 @@ internal class ConversationsFragment @Inject constructor() : BaseFragment() {
             findNavController().navigate(
                 ConversationsFragmentDirections.actionConversationsFragmentToContactsFragment()
             )
+        }
+    }
+
+    private fun setRetryButtonClickListener() {
+        fragmentBinding.retryButton.setOnClickListener {
+            conversationViewModel.loadConversations()
         }
     }
 

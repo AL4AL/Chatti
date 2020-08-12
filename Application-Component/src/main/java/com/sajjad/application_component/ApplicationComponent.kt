@@ -2,6 +2,7 @@ package com.sajjad.application_component
 
 import com.sajjad.application_component.context.component.ContextComponent
 import com.sajjad.application_component.parse.component.ParseComponent
+import com.sajjad.base.session.SessionComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Scope
@@ -16,6 +17,7 @@ interface ApplicationComponent {
 
     fun provideContextComponent(): ContextComponent
     fun provideParseComponent(): ParseComponent
+    fun provideSessionComponent(): SessionComponent
 
     @Component.Factory
     interface Factory {
@@ -23,7 +25,9 @@ interface ApplicationComponent {
             @BindsInstance
             contextComponent: ContextComponent,
             @BindsInstance
-            parseComponent: ParseComponent
+            parseComponent: ParseComponent,
+            @BindsInstance
+            sessionComponent: SessionComponent
         ): ApplicationComponent
     }
 }

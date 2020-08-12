@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.base.beautifyPhoneNumber
 import com.sajjad.application_component.ApplicationComponentProvider
 import com.sajjad.auth.databinding.FragProfileBinding
 import com.sajjad.auth.profile.DaggerProfileComponent
@@ -74,7 +75,7 @@ internal class ProfileFragment : BaseFragment() {
 
     private fun setPhoneNumber(phoneNumber: String?) {
         if (phoneNumber != null)
-            fragmentBinding.phoneNumberTv.text = phoneNumber
+            fragmentBinding.phoneNumberTv.text = phoneNumber.beautifyPhoneNumber()
     }
 
 }
