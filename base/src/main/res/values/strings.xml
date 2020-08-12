@@ -2,5 +2,5 @@
 <resources>
     <string name="login_deep_link" translatable="false" formatted="false">audition://LoginFragment</string>
     <string name="conversations_deep_link" translatable="false" formatted="false">audition://ConversationsFragment</string>
-    <string name="profile_deep_link" translatable="false" formatted="false">audition://ConversationsFragment</string>
+    <string name="profile_deep_link" translatable="false" formatted="false">audition://ProfileFragment</string>
 </resources>

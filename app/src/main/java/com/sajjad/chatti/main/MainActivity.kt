@@ -19,6 +19,7 @@ import com.sajjad.chatti.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_content.*
 import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 import javax.inject.Inject
 
 internal class MainActivity : AppCompatActivity() {
@@ -84,7 +85,7 @@ internal class MainActivity : AppCompatActivity() {
     }
 
     private fun setUsername(username: String?) {
-        headerUsernameTv.isVisible = username != null
+        navigationView.getHeaderView(0).headerUsernameTv.isVisible = username != null
         if (username != null) {
             headerUsernameTv.text = username
         }

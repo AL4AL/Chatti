@@ -1,4 +1,4 @@
-package com.sajjad.chat.contacts.presentation
+    package com.sajjad.chat.contacts.presentation
 
 import androidx.lifecycle.viewModelScope
 import com.sajjad.base.domain.UseCaseHandler
