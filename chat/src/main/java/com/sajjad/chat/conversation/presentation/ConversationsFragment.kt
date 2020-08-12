@@ -13,8 +13,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.example.base.domain.model.User
+import com.parse.ParseUser
+import com.sajjad.application_component.ApplicationComponentProvider
 import com.sajjad.base.presentation.BaseFragment
 import com.sajjad.base.presentation.observe
+import com.sajjad.base.session.SessionHolder
 import com.sajjad.chat.R
 import com.sajjad.chat.conversation.DaggerConversationsComponent
 import com.sajjad.chat.conversation.domain.model.Conversation
@@ -31,6 +35,9 @@ internal class ConversationsFragment @Inject constructor() : BaseFragment() {
     @Inject
     lateinit var conversationAdapter: ConversationAdapter
 
+    @Inject
+    lateinit var sessionHolder: SessionHolder
+
     private lateinit var fragmentBinding: FragConversationsBinding
 
     private val conversationViewModel: ConversationViewModel
@@ -41,7 +48,12 @@ internal class ConversationsFragment @Inject constructor() : BaseFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.parentContext = context
-        DaggerConversationsComponent.create()
+        DaggerConversationsComponent.factory()
+            .create(
+                (context.applicationContext as ApplicationComponentProvider)
+                    .applicationComponent
+                    .provideSessionComponent()
+            )
             .inject(this)
     }
 
@@ -93,6 +105,10 @@ internal class ConversationsFragment @Inject constructor() : BaseFragment() {
         if (isAuthenticated === null) return
         if (isAuthenticated) {
             conversationViewModel.loadConversations()
+            val user = ParseUser.getCurrentUser() as User
+            sessionHolder.setUsername(user.username)
+            sessionHolder.setPhoneNumber(user.phoneNumber)
+            sessionHolder.setAuthenticated(true)
         } else {
             findNavController().popBackStack()
             findNavController().navigate(

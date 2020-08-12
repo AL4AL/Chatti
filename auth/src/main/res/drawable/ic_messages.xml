@@ -4,13 +4,13 @@
     android:width="320dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <path
-        android:fillColor="@color/colorPrimary"
+        android:fillColor="@color/blue_800"
         android:pathData="m226.484,31.024h-194.09c-17.891,0 -32.394,14.504 -32.394,32.394v161.081c0,17.75 14.278,32.158 31.974,32.383v0.01l9.026,5.108h51.5l12.083,-5.107h121.898c17.891,0 32.394,-14.503 32.394,-32.394v-161.081c0,-17.889 -14.502,-32.392 -32.391,-32.394z" />
     <path
-        android:fillColor="@color/colorPrimaryDark"
+        android:fillColor="@color/blue_800_dark"
         android:pathData="m288.561,31.024h-64.955c17.891,0 32.394,14.503 32.394,32.394v161.081c0,17.891 -14.503,32.394 -32.394,32.394h64.955c17.891,0 32.394,-14.503 32.394,-32.394v-161.081c0,-17.89 -14.503,-32.394 -32.394,-32.394z" />
     <path
-        android:fillColor="@color/colorPrimaryDark"
+        android:fillColor="@color/blue_800_dark"
         android:pathData="m31.974,332.142c0,4.72 5.957,6.789 8.883,3.085l57.983,-73.406c2.458,-3.112 6.206,-4.928 10.172,-4.928h-77.038z" />
     <path
         android:fillColor="#1976d2"

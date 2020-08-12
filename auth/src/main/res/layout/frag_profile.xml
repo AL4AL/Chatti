@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profileImageContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="@dimen/_50sdp"
+                app:cardCornerRadius="@dimen/_54sdp"
+                app:cardBackgroundColor="@color/blue_700_light"
+                app:cardElevation="?attr/profileImageElevation"
+                app:contentPadding="@dimen/_4sdp">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:src="@drawable/ic_person_24"
+                    android:layout_gravity="center" />
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/usernameIcon"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                app:layout_constraintTop_toBottomOf="@id/profileImageContainer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/ic_person_24"
+                android:layout_marginLeft="@dimen/_32sdp"
+                android:layout_marginTop="@dimen/_48sdp" />
+
+            <TextView
+                android:id="@+id/usernameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                app:layout_constraintLeft_toRightOf="@id/usernameIcon"
+                app:layout_constraintTop_toTopOf="@id/usernameIcon"
+                android:layout_marginLeft="@dimen/_24sdp"
+                android:textSize="?attr/profileDetailsTitleTextSize" />
+
+            <TextView
+                android:id="@+id/usernameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/usernameTitle"
+                app:layout_constraintLeft_toLeftOf="@id/usernameTitle"
+                tools:text="Amir hosein"
+                android:textSize="?attr/profileDetailsValueTextSize"
+                android:textColor="?attr/profileDetailsValueTextColor" />
+
+            <View
+                android:id="@+id/usernameDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@id/usernameTv"
+                app:layout_constraintLeft_toLeftOf="@id/usernameTitle"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="?attr/onWindowBackgroundDividerColor" />
+
+            <ImageView
+                android:id="@+id/phoneIcon"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                app:layout_constraintTop_toBottomOf="@id/usernameDivider"
+                app:layout_constraintLeft_toLeftOf="@id/usernameIcon"
+                android:src="@drawable/ic_phone_24"
+                android:layout_marginTop="@dimen/_32sdp" />
+
+            <TextView
+                android:id="@+id/phoneNumberTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone"
+                app:layout_constraintLeft_toRightOf="@id/phoneIcon"
+                app:layout_constraintTop_toTopOf="@id/phoneIcon"
+                android:layout_marginLeft="@dimen/_24sdp"
+                android:textSize="?attr/profileDetailsTitleTextSize" />
+
+            <TextView
+                android:id="@+id/phoneNumberTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/phoneNumberTitle"
+                app:layout_constraintLeft_toLeftOf="@id/phoneNumberTitle"
+                tools:text="09195557496"
+                android:textSize="?attr/profileDetailsValueTextSize"
+                android:textColor="?attr/profileDetailsValueTextColor" />
+
+            <View
+                android:id="@+id/phoneNumberDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@id/phoneNumberTv"
+                app:layout_constraintLeft_toLeftOf="@id/phoneNumberTitle"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="?attr/onWindowBackgroundDividerColor" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/logoutCardView"
+                android:layout_width="?attr/authActionButtonWidth"
+                android:layout_height="?attr/authActionButtonHeight"
+                android:layout_marginTop="@dimen/_48sdp"
+                android:layout_marginBottom="@dimen/_32sdp"
+                app:layout_constraintTop_toBottomOf="@id/phoneNumberDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:cardCornerRadius="?attr/authActionButtonCornerRadius">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/logout"
+                    android:textColor="?attr/authActionButtonTextColor"
+                    android:textSize="?attr/authActionButtonTextSize"
+                    android:layout_gravity="center" />
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

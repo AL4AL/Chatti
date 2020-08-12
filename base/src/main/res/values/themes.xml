@@ -4,21 +4,31 @@
     <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <style name="NormalTheme" parent="MainTheme">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorSecondaryLight</item>
+        <item name="colorPrimary">@color/blue_800</item>
+        <item name="colorPrimaryDark">@color/blue_800_dark</item>
+        <item name="colorAccent">@color/blue_700_light</item>
         <item name="textSizeOfFormsInput">@dimen/_20sdp</item>
         <item name="android:windowBackground">@color/defaultBackground</item>
         <item name="authLogoSize">@dimen/_80sdp</item>
         <item name="authRedirectionTextSize">@dimen/_16ssp</item>
         <item name="authRedirectionTextColor">@color/grey_600</item>
-        <item name="drawerHeaderColor">@color/colorSecondary</item>
+        <item name="drawerHeaderColor">@color/blue_700</item>
         <item name="drawerHeaderHeight">@dimen/_176sdp</item>
         <item name="drawerProfileSize">@dimen/_100sdp</item>
         <item name="contactNameColor">@color/grey_600</item>
         <item name="contactNameSize">@dimen/_16ssp</item>
-        <item name="drawerProfileBackground">@drawable/profile_circle_background</item>
         <item name="textColorOnSecondaryColor">@android:color/white</item>
         <item name="drawerHeaderTextSize">@dimen/_16ssp</item>
+        <item name="profileDetailsTitleTextSize">@dimen/_12ssp</item>
+        <item name="profileDetailsValueTextSize">@dimen/_16ssp</item>
+        <item name="profileDetailsValueTextColor">@android:color/black</item>
+        <item name="onWindowBackgroundDividerColor">@android:color/darker_gray</item>
+        <item name="authActionButtonTextSize">@dimen/_22ssp</item>
+        <item name="authActionButtonWidth">@dimen/_130sdp</item>
+        <item name="authActionButtonHeight">@dimen/_45sdp</item>
+        <item name="authActionButtonTextColor">@color/grey_700</item>
+        <item name="authActionButtonCornerRadius">@dimen/_8sdp</item>
+        <item name="profileImageBackgroundColor">@color/blue_700_light</item>
+        <item name="profileImageElevation">@dimen/_8sdp</item>
     </style>
 </resources>

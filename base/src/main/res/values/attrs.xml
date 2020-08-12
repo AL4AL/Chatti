@@ -2,10 +2,24 @@
 <resources>
     <attr name="textSizeOfFormsInput" format="dimension" />
     <attr name="authLogoSize" format="dimension" />
+    <attr name="authActionButtonWidth" format="dimension" />
+    <attr name="authActionButtonHeight" format="dimension" />
+    <attr name="authActionButtonCornerRadius" format="dimension" />
+    <attr name="authActionButtonTextSize" format="dimension" />
+    <attr name="authActionButtonTextColor" format="color" />
     <attr name="authRedirectionTextColor" format="color" />
     <attr name="authRedirectionTextSize" format="dimension" />
     <attr name="drawerHeaderColor" format="color" />
     <attr name="drawerHeaderHeight" format="dimension" />
+    <attr name="drawerHeaderTextSize" format="dimension" />
+    <attr name="drawerProfileSize" format="dimension" />
     <attr name="contactNameColor" format="color" />
     <attr name="contactNameSize" format="dimension" />
+    <attr name="textColorOnSecondaryColor" format="color" />
+    <attr name="profileDetailsTitleTextSize" format="dimension" />
+    <attr name="profileDetailsValueTextSize" format="dimension" />
+    <attr name="profileDetailsValueTextColor" format="color" />
+    <attr name="onWindowBackgroundDividerColor" format="color" />
+    <attr name="profileImageBackgroundColor" format="color" />
+    <attr name="profileImageElevation" format="dimension" />
 </resources>

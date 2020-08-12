@@ -11,17 +11,22 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.sajjad.application_component.ApplicationComponentProvider
 import com.sajjad.auth.R
 import com.sajjad.auth.databinding.FragSignupBinding
 import com.sajjad.auth.signup.DaggerSignUpComponent
 import com.sajjad.base.presentation.BaseFragment
 import com.sajjad.base.presentation.observe
+import com.sajjad.base.session.SessionHolder
 import javax.inject.Inject
 
-class SignUpFragment : BaseFragment() {
+internal class SignUpFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var sessionHolder: SessionHolder
 
     private lateinit var fragmentBinding: FragSignupBinding
     private val signUpViewModel: SignUpViewModel
@@ -37,7 +42,11 @@ class SignUpFragment : BaseFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         DaggerSignUpComponent.factory()
-            .create()
+            .create(
+                (context.applicationContext as ApplicationComponentProvider)
+                    .applicationComponent
+                    .provideSessionComponent()
+            )
             .inject(this)
     }
 
@@ -105,6 +114,9 @@ class SignUpFragment : BaseFragment() {
 
     private fun userSignedUpState(isSuccessful: Boolean = true) {
         if (isSuccessful) {
+            sessionHolder.setAuthenticated(true)
+            sessionHolder.setUsername(username)
+            sessionHolder.setPhoneNumber(phoneNumber)
             findNavController().popBackStack()
             findNavController().popBackStack()
             findNavController().navigate(Uri.parse(getString(R.string.conversations_deep_link)))

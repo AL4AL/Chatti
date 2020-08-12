@@ -10,17 +10,24 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.base.domain.model.User
+import com.parse.ParseUser
+import com.sajjad.application_component.ApplicationComponentProvider
 import com.sajjad.auth.R
 import com.sajjad.auth.databinding.FragLoginBinding
 import com.sajjad.auth.login.DaggerLoginComponent
 import com.sajjad.base.presentation.BaseFragment
 import com.sajjad.base.presentation.observe
+import com.sajjad.base.session.SessionHolder
 import javax.inject.Inject
 
 internal class LoginFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var sessionHolder: SessionHolder
 
     private val loginViewModel: LoginViewModel
             by viewModels(factoryProducer = { viewModelFactory })
@@ -35,7 +42,11 @@ internal class LoginFragment : BaseFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         DaggerLoginComponent.factory()
-            .create()
+            .create(
+                (context.applicationContext as ApplicationComponentProvider)
+                    .applicationComponent
+                    .provideSessionComponent()
+            )
             .inject(this)
     }
 
@@ -114,7 +125,10 @@ internal class LoginFragment : BaseFragment() {
     }
 
     private fun successState(isSuccessful: Boolean = true) {
+        sessionHolder.setAuthenticated(isSuccessful)
         if (isSuccessful) {
+            sessionHolder.setUsername(username)
+            sessionHolder.setUsername((ParseUser.getCurrentUser() as User).phoneNumber)
             findNavController().popBackStack()
             findNavController().navigate(Uri.parse(getString(R.string.conversations_deep_link)))
         }

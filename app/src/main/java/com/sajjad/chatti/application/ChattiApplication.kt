@@ -12,6 +12,7 @@ import com.sajjad.application_component.context.component.DaggerContextComponent
 import com.sajjad.application_component.network.component.DaggerNetworkComponent
 import com.sajjad.application_component.parse.component.DaggerParseComponent
 import com.sajjad.base.domain.model.Message
+import com.sajjad.base.session.DaggerSessionComponent
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -29,11 +30,15 @@ class ChattiApplication : Application(), ApplicationComponentProvider {
             networkComponent = this.networkComponent
         )
 
+    private val sessionComponent = DaggerSessionComponent.factory()
+        .create()
+
     override val applicationComponent: ApplicationComponent = DaggerApplicationComponent
         .factory()
         .create(
             contextComponent = this.contextComponent,
-            parseComponent = this.parseComponent
+            parseComponent = this.parseComponent,
+            sessionComponent = this.sessionComponent
         )
 
     @Inject

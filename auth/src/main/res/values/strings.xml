@@ -14,4 +14,8 @@
     <string name="phone_number_is_empty">Phone number is empty</string>
     <string name="phone_number_already_exists">PhonenNumber already exists</string>
     <string name="invalid_user_name_password">Invalid username or password</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
 </resources>
